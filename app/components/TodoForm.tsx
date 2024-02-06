@@ -2,8 +2,10 @@
 
 import React from "react";
 import createTodo from "../actions/db.actions";
+import { useFormStatus } from "react-dom";
 
 function TodoForm() {
+	const status = useFormStatus();
 	return (
 		<form
 			action={createTodo}
@@ -14,7 +16,7 @@ function TodoForm() {
 				className="border-2 border-gray-300 p-2 m-2"
 				name="description"
 			/>
-			<button type="submit" className="bg-blue-500 text-white p-2 m-2">
+			<button disabled={status.pending} type="submit" className="bg-blue-500 text-white p-2 m-2">
 				Submit
 			</button>
 		</form>
